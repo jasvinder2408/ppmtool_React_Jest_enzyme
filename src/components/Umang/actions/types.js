@@ -1,0 +1,5 @@
+export const GET_ERRORS = "GET_ERRORS";
+
+export const GET_SERVICES = "GET_SERVICES";
+export const GET_SERVICE_BY_ID = "GET_SERVICE_BY_ID";
+export const CREATE_SERVICE = "CREATE_SERVICE";

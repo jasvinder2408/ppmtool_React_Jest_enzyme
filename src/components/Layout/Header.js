@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logout } from "../../actions/securityActions";
-import { toast } from 'react-toastify';
-
+import { toast } from "react-toastify";
 
 class Header extends Component {
   logout() {
@@ -20,6 +19,13 @@ class Header extends Component {
           <li className="nav-item">
             <Link className="nav-link" to="/dashboard">
               Dashboard
+            </Link>
+          </li>
+        </ul>
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item">
+            <Link className="nav-link" to="/services">
+              All Services
             </Link>
           </li>
         </ul>
@@ -77,13 +83,17 @@ class Header extends Component {
           </Link>
 
           <ul className="navbar-nav ml-auto">
-         
-          <li className="nav-item">
-          <Link className="navbar-brand" to="/react-table"> Show React Table</Link>
-
-          </li>
-        </ul>
-
+            <li className="nav-item">
+              <Link className="navbar-brand" to="/react-table">
+                {" "}
+                Show React Table
+              </Link>
+              <Link className="navbar-brand" to="/multistep">
+                {" "}
+                Show Multi step form
+              </Link>
+            </li>
+          </ul>
 
           <button onClick={notify}>Click to show toast notification</button>
           <button
@@ -103,20 +113,17 @@ class Header extends Component {
 
 Header.propTypes = {
   logout: PropTypes.func.isRequired,
-  security: PropTypes.object.isRequired
+  security: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  security: state.security
+const mapStateToProps = (state) => ({
+  security: state.security,
 });
 
-const notify =() =>{
-  toast('Default Notification',{position : toast.POSITION.TOP_RIGHT} );
-  toast.success('Success Notification',{position : toast.POSITION.TOP_LEFT});
-  toast.warn('Warning Notification',{position: toast.POSITION.TOP_CENTER});
-  toast.error('Error Notification',{position: toast.POSITION.BOTTOM_CENTER});
-}
-export default connect(
-  mapStateToProps,
-  { logout }
-)(Header);
+const notify = () => {
+  toast("Default Notification", { position: toast.POSITION.TOP_RIGHT });
+  toast.success("Success Notification", { position: toast.POSITION.TOP_LEFT });
+  toast.warn("Warning Notification", { position: toast.POSITION.TOP_CENTER });
+  toast.error("Error Notification", { position: toast.POSITION.BOTTOM_CENTER });
+};
+export default connect(mapStateToProps, { logout })(Header);

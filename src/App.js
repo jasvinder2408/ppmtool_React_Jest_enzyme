@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Dashboard from "./components/Dashboard";
 import Header from "./components/Layout/Header";
+import Footer from "./components/Layout/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddProject from "./components/Project/AddProject";
@@ -19,11 +20,19 @@ import setJWTToken from "./securityUtils/setJWTToken";
 import { SET_CURRENT_USER } from "./actions/types";
 import { logout } from "./actions/securityActions";
 import SecuredRoute from "./securityUtils/SecureRoute";
-//import TableDemo from "./components/UserManagement/TableDemo";
+//import TableDemo from "./components/UserManagement/TableDemo";""
+import ReactTableHocDemo from "./components/ReactTable/ReactTableHocDemo";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Services from "./components/Umang/Services";
+import CreateService from "./components/Umang/Services/CreateService";
+import UpdateService from "./components/Umang/Services/UpdateService";
+import { Super } from "./components/ModalFunctionality/Super";
+import Layout from "./components/Layout/Layout";
+import { Home } from "./components/Layout/Home";
+import MainApp from "./components/multistepForm/MainApp";
+import TestData from "./components/pagination/TestData";
 // Call it once in your app. At the root of your app is the best place
 toast.configure();
 
@@ -49,23 +58,38 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div className="App">
-            <Header />
+          <Layout>
             {
               //Public Routes
             }
 
-            <Route exact path="/" component={Landing} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/modal" component={Super} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            {/* <Route exact path="/react-table" component={TableDemo} /> */}
+            <Route exact path="/multistep" component={MainApp} />
+            <Route exact path="/pagination" component={TestData} />
+
+
+            <Route exact path="/react-table" component={ReactTableHocDemo} />
 
             {
               //Private Routes
             }
             <Switch>
               <SecuredRoute exact path="/dashboard" component={Dashboard} />
+              <SecuredRoute exact path="/services" component={Services} />
               <SecuredRoute exact path="/addProject" component={AddProject} />
+              <SecuredRoute
+                exact
+                path="/createService"
+                component={CreateService}
+              />
+              <SecuredRoute
+                exact
+                path="/updateService/:id"
+                component={UpdateService}
+              />
               <SecuredRoute
                 exact
                 path="/updateProject/:id"
@@ -87,7 +111,7 @@ class App extends Component {
                 component={UpdateProjectTask}
               />
             </Switch>
-          </div>
+          </Layout>
         </Router>
       </Provider>
     );

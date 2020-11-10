@@ -10,7 +10,7 @@ class Login extends Component {
     this.state = {
       username: "",
       password: "",
-      errors: {}
+      errors: {},
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -36,7 +36,7 @@ class Login extends Component {
     e.preventDefault();
     const LoginRequest = {
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
     };
 
     this.props.login(LoginRequest);
@@ -59,7 +59,7 @@ class Login extends Component {
                   <input
                     type="text"
                     className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.username
+                      "is-invalid": errors.username,
                     })}
                     placeholder="Email Address"
                     name="username"
@@ -74,7 +74,7 @@ class Login extends Component {
                   <input
                     type="password"
                     className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.password
+                      "is-invalid": errors.password,
                     })}
                     placeholder="Password"
                     name="password"
@@ -98,15 +98,12 @@ class Login extends Component {
 Login.propTypes = {
   login: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
-  security: PropTypes.object.isRequired
+  security: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   security: state.security,
-  errors: state.errors
+  errors: state.errors,
 });
 
-export default connect(
-  mapStateToProps,
-  { login }
-)(Login);
+export default connect(mapStateToProps, { login })(Login);

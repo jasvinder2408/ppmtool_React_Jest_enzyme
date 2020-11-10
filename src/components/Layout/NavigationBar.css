@@ -1,0 +1,111 @@
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 47px;
+  left: 0;
+  background-color: #3c2c72;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+
+/*
+menu and submenu
+*/
+#menuwrapper .item,
+#menuwrapper .item .menu {
+  /* margin: 0;
+  padding: 0;
+  list-style: none; */
+}
+#menuwrapper .item .menu {
+  background-color: #39255e;
+  border-bottom: solid 1px white;
+  width: 150px;
+  /* cursor: pointer; */
+}
+#menuwrapper ul li:hover,
+#menuwrapper ul li.iehover {
+  background-color: #6679e9;
+  /* position: relative; */
+}
+#menuwrapper ul li a {
+  padding: 5px 15px;
+  color: #ffffff;
+  display: inline-block;
+  text-decoration: none;
+}
+#menuwrapper ul li ul {
+  position: absolute;
+  display: none;
+}
+#menuwrapper ul li:hover ul,
+#menuwrapper ul li.iehover ul {
+  left: 150px;
+  top: 0px;
+  display: block;
+}
+#menuwrapper ul li:hover ul li:hover,
+#menuwrapper ul li.iehover ul li.iehover {
+  background-color: #6679e9;
+}
+
+/* We style the color of level 2 links */
+#menuwrapper ul li ul li a {
+  display: inline-block;
+  width: 120px;
+}
+
+#menuwrapper ul li:hover ul li ul,
+#menuwrapper ul li.iehover ul li ul {
+  position: absolute;
+  display: none;
+}
+#menuwrapper ul li:hover ul li:hover ul,
+#menuwrapper ul li.iehover ul li.iehover ul {
+  display: block;
+  left: 150px;
+  top: 0;
+}
+#menuwrapper ul li:hover ul li:hover ul li,
+#menuwrapper ul li.iehover ul li.iehover ul li {
+  background: #39255e;
+}
+#menuwrapper ul li:hover ul li:hover ul li:hover,
+#menuwrapper ul li.iehover ul li.iehover ul li.iehover {
+  background: #6679e9;
+}
+#menuwrapper ul li:hover ul li:hover ul li a,
+#menuwrapper ul li.iehover ul li.iehover ul li a {
+  color: #ffffff;
+}
